@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal death
+
 var speed = 0.0
 var direction = 0
 var old_direction = 1
@@ -59,3 +61,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	position = $"../spawn".position
+	emit_signal("death")

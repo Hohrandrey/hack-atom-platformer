@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://hwmgqyuysuam"]
+[gd_scene load_steps=6 format=3 uid="uid://4aqr2hytdqj3"]
 
-[ext_resource type="Script" path="res://scenes/level_1/moving_platform.gd" id="1_lkwpn"]
-[ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="1_qumcf"]
+[ext_resource type="Script" path="res://scenes/level_1/falling_plateform.gd" id="1_sl0ra"]
+[ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="2_4vpjo"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0d85"]
-texture = ExtResource("1_qumcf")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2ww1"]
+texture = ExtResource("2_4vpjo")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -291,37 +291,25 @@ texture = ExtResource("1_qumcf")
 20:10/0 = 0
 20:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_blgnh"]
+[sub_resource type="TileSet" id="TileSet_sk2gd"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_l0d85")
+sources/0 = SubResource("TileSetAtlasSource_p2ww1")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqc1t"]
-size = Vector2(98, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwhtn"]
+size = Vector2(94, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v6fy"]
-size = Vector2(94, 3)
-
-[node name="moving_platform" type="CharacterBody2D"]
-script = ExtResource("1_lkwpn")
+[node name="falling_plateform" type="CharacterBody2D"]
+script = ExtResource("1_sl0ra")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_blgnh")
+tile_set = SubResource("TileSet_sk2gd")
 format = 2
-layer_0/tile_data = PackedInt32Array(65533, 786432, 4, 65534, 851968, 4, 1, 851968, 4, 2, 917504, 4, 65535, 851968, 4, 0, 851968, 4)
+layer_0/tile_data = PackedInt32Array(2, 917504, 8, 65533, 786432, 8, 65534, 851968, 8, 65535, 851968, 8, 0, 851968, 8, 1, 851968, 8)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_aqc1t")
-
-[node name="Moving_area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Moving_area"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_3v6fy")
-debug_color = Color(0.366276, 0.616257, 1.92523e-07, 0.42)
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_lwhtn")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Moving_area" to="." method="_on_moving_area_body_entered"]
-[connection signal="body_exited" from="Moving_area" to="." method="_on_moving_area_body_exited"]
