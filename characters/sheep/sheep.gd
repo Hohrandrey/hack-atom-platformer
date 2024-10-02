@@ -13,9 +13,6 @@ const MAX_SPEED = 250.0
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and abs(jump_velocity) < MAX_JUMP and\
@@ -27,9 +24,6 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		jump_velocity = 0
-	
-	if Input.is_action_pressed("jump"):
-		pass
 	
 	# The uniformly accelerated motion
 	direction = Input.get_axis("left", "right")
@@ -54,8 +48,12 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("Idle")
-	
+		# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	velocity.x = speed
+	if $"../moving_platform".is_platform:
+		velocity += $"../moving_platform".velocity
 	move_and_slide()
 
 
