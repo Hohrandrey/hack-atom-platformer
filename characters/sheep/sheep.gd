@@ -18,7 +18,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_pressed("jump") and abs(jump_velocity) < MAX_JUMP:
+	if Input.is_action_pressed("jump") and abs(jump_velocity) < MAX_JUMP and\
+	not(is_on_wall_only()):
 		jump_velocity -= ACCELERATION
 		velocity.y += jump_velocity
 	else:
@@ -26,6 +27,9 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		jump_velocity = 0
+	
+	if Input.is_action_pressed("jump"):
+		pass
 	
 	# The uniformly accelerated motion
 	direction = Input.get_axis("left", "right")
@@ -53,3 +57,7 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = speed
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	position = $"../spawn".position

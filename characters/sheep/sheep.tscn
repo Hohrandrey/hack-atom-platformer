@@ -13,9 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cgnwlry4rcxx2" path="res://images/Тестовый перс/run/sheep-run-4.png" id="7_q30xo"]
 [ext_resource type="Texture2D" uid="uid://df7hfw7eoavuo" path="res://images/Тестовый перс/run/sheep-run-5.png" id="8_q037n"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bosna"]
-radius = 16.4021
-height = 54.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kh0q1"]
+size = Vector2(23.2804, 52)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw55n"]
 animations = [{
@@ -87,13 +86,12 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
+position = Vector2(-6, 3)
 scale = Vector2(0.945, 0.5)
-shape = SubResource("CapsuleShape2D_bosna")
+shape = SubResource("RectangleShape2D_kh0q1")
 one_way_collision_margin = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -3)
 sprite_frames = SubResource("SpriteFrames_hw55n")
-animation = &"run"
+animation = &"Idle"
 autoplay = "Idle"
