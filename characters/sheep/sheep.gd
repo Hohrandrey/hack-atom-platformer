@@ -7,6 +7,8 @@ var direction = 0
 var old_direction = 1
 var jump_velocity = 0
 
+var spawn = Vector2()
+
 var moving_velosity_x = 0
 
 const MAX_JUMP = 100
@@ -15,9 +17,11 @@ const SLOWDOWN = 20.0
 const ACCELERATION = 10.0
 const MAX_SPEED = 250.0
 
+func _ready() -> void:
+	spawn = Vector2($"../spawn/start_spawn".position)
+	add_to_group("sheep")
 
 func _physics_process(delta: float) -> void:
-
 	# Handle jump.
 	if Input.is_action_pressed("jump") and abs(jump_velocity) < MAX_JUMP and\
 	not(is_on_wall_only()):
@@ -61,7 +65,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	position = $"../spawn".position
+	position = spawn
 	emit_signal("death")
 
 
@@ -71,3 +75,7 @@ func _on_moving_platform_platform(velosity: Variant) -> void:
 
 func _on_moving_platform_stop() -> void:
 	moving_velosity_x = 0
+
+
+func _on_spawn_new_spawn(x: Variant, y: Variant) -> void:
+	spawn = Vector2(x, y)

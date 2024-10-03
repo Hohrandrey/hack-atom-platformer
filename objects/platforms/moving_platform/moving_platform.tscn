@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://hwmgqyuysuam"]
 
-[ext_resource type="Script" path="res://scenes/level_1/moving_platform.gd" id="1_lkwpn"]
+[ext_resource type="Script" path="res://objects/platforms/moving_platform/moving_platform.gd" id="1_lkwpn"]
 [ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="1_qumcf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0d85"]
