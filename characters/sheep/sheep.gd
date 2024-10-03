@@ -7,6 +7,8 @@ var direction = 0
 var old_direction = 1
 var jump_velocity = 0
 
+var moving_velosity_x = 0
+
 const MAX_JUMP = 100
 const ACCELERATION_JUMP = 20.0
 const SLOWDOWN = 20.0
@@ -54,11 +56,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	velocity.x = speed
-	if $"../moving_platform".is_platform:
-		velocity += $"../moving_platform".velocity
+	velocity.x += moving_velosity_x
 	move_and_slide()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	position = $"../spawn".position
 	emit_signal("death")
+
+
+func _on_moving_platform_platform(velosity: Variant) -> void:
+	moving_velosity_x = velosity
+
+
+func _on_moving_platform_stop() -> void:
+	moving_velosity_x = 0
