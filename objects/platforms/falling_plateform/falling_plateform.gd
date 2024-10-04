@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	is_gravity = true
+	if body.is_in_group("sheep"):
+		is_gravity = true
 
 
 func _on_sheep_death() -> void:
