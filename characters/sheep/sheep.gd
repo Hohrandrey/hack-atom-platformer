@@ -79,3 +79,9 @@ func _on_moving_platform_stop() -> void:
 
 func _on_spawn_new_spawn(x: Variant, y: Variant) -> void:
 	spawn = Vector2(x, y)
+
+
+func _on_celling_check_body_entered(body: Node2D) -> void:
+	if not(body.is_in_group("sheep")) and is_on_floor():
+		position = spawn
+		emit_signal("death")

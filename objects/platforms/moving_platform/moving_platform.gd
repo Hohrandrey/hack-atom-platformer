@@ -3,6 +3,8 @@ extends CharacterBody2D
 signal platform(velosity)
 signal stop
 
+@export var vector = Vector2()
+
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var direction = 1
@@ -12,13 +14,14 @@ var is_platform = false
 func _physics_process(delta: float) -> void:
 	if is_platform:
 		emit_signal("platform", velocity.x)
-	velocity.x = direction * SPEED
+	velocity = vector * direction * SPEED
 	move_and_slide()
 
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	direction *= -1
+	if not(body.is_in_group("sheep")):
+		direction *= -1
 
 
 func _on_moving_area_body_entered(body: Node2D) -> void:
