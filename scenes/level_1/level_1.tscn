@@ -402,6 +402,15 @@ position = Vector2(6481, 240)
 [node name="falling_plateform10" parent="falling_platforms" instance=ExtResource("9_68e11")]
 position = Vector2(6681, 240)
 
+[node name="falling_plateform11" parent="falling_platforms" instance=ExtResource("9_68e11")]
+position = Vector2(8320, 400)
+
+[node name="falling_plateform12" parent="falling_platforms" instance=ExtResource("9_68e11")]
+position = Vector2(8512, 472)
+
+[node name="falling_plateform13" parent="falling_platforms" instance=ExtResource("9_68e11")]
+position = Vector2(8688, 552)
+
 [node name="moving_platforms" type="Node2D" parent="."]
 
 [node name="moving_platform" parent="moving_platforms" instance=ExtResource("2_2v54s")]
@@ -428,10 +437,6 @@ vector = Vector2(1, 0)
 position = Vector2(7475, 351)
 vector = Vector2(1, 0)
 
-[node name="moving_platform7" parent="moving_platforms" instance=ExtResource("2_2v54s")]
-position = Vector2(8210, 464)
-vector = Vector2(1, 0)
-
 [node name="spawn" type="Node2D" parent="."]
 
 [node name="start_spawn" type="Marker2D" parent="spawn"]
@@ -453,6 +458,9 @@ position = Vector2(9160, 531)
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform8" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform9" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform10" method="_on_sheep_death"]
+[connection signal="death" from="sheep" to="falling_platforms/falling_plateform11" method="_on_sheep_death"]
+[connection signal="death" from="sheep" to="falling_platforms/falling_plateform12" method="_on_sheep_death"]
+[connection signal="death" from="sheep" to="falling_platforms/falling_plateform13" method="_on_sheep_death"]
 [connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
 [connection signal="platform" from="moving_platforms/moving_platform" to="sheep" method="_on_moving_platform_platform"]
 [connection signal="stop" from="moving_platforms/moving_platform" to="sheep" method="_on_moving_platform_stop"]
@@ -466,7 +474,5 @@ position = Vector2(9160, 531)
 [connection signal="stop" from="moving_platforms/moving_platform5" to="sheep" method="_on_moving_platform_stop"]
 [connection signal="platform" from="moving_platforms/moving_platform6" to="sheep" method="_on_moving_platform_platform"]
 [connection signal="stop" from="moving_platforms/moving_platform6" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="platform" from="moving_platforms/moving_platform7" to="sheep" method="_on_moving_platform_platform"]
-[connection signal="stop" from="moving_platforms/moving_platform7" to="sheep" method="_on_moving_platform_stop"]
 [connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
 [connection signal="new_spawn" from="spawn/spawn2" to="sheep" method="_on_spawn_new_spawn"]

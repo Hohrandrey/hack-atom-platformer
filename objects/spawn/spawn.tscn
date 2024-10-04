@@ -10,7 +10,7 @@ script = ExtResource("1_vrnn0")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1, 100)
+scale = Vector2(1, 10)
 shape = SubResource("RectangleShape2D_whjsc")
 debug_color = Color(0.589978, 0.547846, 5.77569e-07, 0.42)
 
