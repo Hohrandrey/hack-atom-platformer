@@ -14,6 +14,8 @@ var moving_velosity_x = 0
 var jerk = 0
 var is_jerk = false
 
+var is_end = false
+
 const MAX_JUMP = 100
 const SLOWDOWN = 20.0
 const ACCELERATION = 10.0
@@ -54,7 +56,11 @@ func _physics_process(delta: float) -> void:
 	# flip
 	$AnimatedSprite2D.flip_h = not(old_direction+1)
 	
-	if not(is_on_floor()):
+	if is_end:
+		$AnimatedSprite2D.play("Idle")
+	elif is_jerk:
+		$AnimatedSprite2D.play("jerk")
+	elif not(is_on_floor()):
 		$AnimatedSprite2D.play("jump")
 	elif int(speed) != 0:
 		$AnimatedSprite2D.play("run")
@@ -74,9 +80,12 @@ func _physics_process(delta: float) -> void:
 		is_jerk = false
 		if is_on_floor():
 			jerk = 0
-	
 	velocity.x = speed
 	velocity.x += moving_velosity_x
+	
+	if is_end:
+		velocity = Vector2(0, 0)
+	
 	move_and_slide()
 
 
@@ -101,3 +110,7 @@ func _on_celling_check_body_entered(body: Node2D) -> void:
 	if not(body.is_in_group("sheep")) and is_on_floor():
 		position = spawn
 		emit_signal("death")
+
+
+func _on_transition_end() -> void:
+	is_end = true

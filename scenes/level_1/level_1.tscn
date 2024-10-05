@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdyl8ots0d6po"]
+[gd_scene load_steps=15 format=3 uid="uid://cdyl8ots0d6po"]
 
 [ext_resource type="Texture2D" uid="uid://y0dxt8e65rsj" path="res://images/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="1_rergt"]
 [ext_resource type="PackedScene" uid="uid://hwmgqyuysuam" path="res://objects/platforms/moving_platform/moving_platform.tscn" id="2_2v54s"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://doypa4iy1cctp" path="res://characters/sheep/sheep.tscn" id="7_x8hn6"]
 [ext_resource type="PackedScene" uid="uid://4aqr2hytdqj3" path="res://objects/platforms/falling_plateform/falling_plateform.tscn" id="9_68e11"]
 [ext_resource type="PackedScene" uid="uid://bw5447klvfmgi" path="res://objects/spawn/spawn.tscn" id="10_h4nud"]
+[ext_resource type="PackedScene" uid="uid://dckyqigowwh0r" path="res://objects/transition/transition.tscn" id="10_r8o2n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ittkh"]
 texture = ExtResource("6_hnpfj")
@@ -442,8 +443,8 @@ position = Vector2(149, 560)
 [node name="spawn" parent="spawn" instance=ExtResource("10_h4nud")]
 position = Vector2(4424, 588)
 
-[node name="spawn2" parent="spawn" instance=ExtResource("10_h4nud")]
-position = Vector2(9160, 540)
+[node name="transition" parent="spawn" instance=ExtResource("10_r8o2n")]
+position = Vector2(9164, 540)
 
 [node name="sheep" parent="." instance=ExtResource("7_x8hn6")]
 position = Vector2(149, 560)
@@ -462,7 +463,7 @@ position = Vector2(149, 560)
 [connection signal="platform" from="moving_platforms/moving_platform6" to="sheep" method="_on_moving_platform_platform"]
 [connection signal="stop" from="moving_platforms/moving_platform6" to="sheep" method="_on_moving_platform_stop"]
 [connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
-[connection signal="new_spawn" from="spawn/spawn2" to="sheep" method="_on_spawn_new_spawn"]
+[connection signal="end" from="spawn/transition" to="sheep" method="_on_transition_end"]
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform2" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform3" method="_on_sheep_death"]

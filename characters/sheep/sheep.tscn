@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://doypa4iy1cctp"]
+[gd_scene load_steps=21 format=3 uid="uid://doypa4iy1cctp"]
 
 [ext_resource type="Texture2D" uid="uid://bu7k2iaecwjt8" path="res://images/Тестовый перс/sheep-idle/sheep-idle.png" id="1_0n53y"]
 [ext_resource type="Script" path="res://characters/sheep/sheep.gd" id="1_h2ofo"]
@@ -8,10 +8,27 @@
 [ext_resource type="Texture2D" uid="uid://cdjimnyo0qkmk" path="res://images/Тестовый перс/Jump/sheep-jump-1.png" id="4_rtyay"]
 [ext_resource type="Texture2D" uid="uid://csourayhfrg4d" path="res://images/Тестовый перс/Jump/sheep-jump-2.png" id="5_eo3lw"]
 [ext_resource type="Texture2D" uid="uid://bs1315ghx5lij" path="res://images/Тестовый перс/run/sheep-run-2.png" id="5_sthpb"]
+[ext_resource type="Texture2D" uid="uid://dmrue8i8j2ifj" path="res://images/Тестовый перс/sheep-kick-anim-pack.png" id="5_wmsan"]
 [ext_resource type="Texture2D" uid="uid://bve1ph71ky86g" path="res://images/Тестовый перс/Jump/sheep-jump-3.png" id="6_n62wp"]
 [ext_resource type="Texture2D" uid="uid://bknjnfta0543f" path="res://images/Тестовый перс/run/sheep-run-3.png" id="6_wpmkw"]
 [ext_resource type="Texture2D" uid="uid://cgnwlry4rcxx2" path="res://images/Тестовый перс/run/sheep-run-4.png" id="7_q30xo"]
 [ext_resource type="Texture2D" uid="uid://df7hfw7eoavuo" path="res://images/Тестовый перс/run/sheep-run-5.png" id="8_q037n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndem0"]
+atlas = ExtResource("5_wmsan")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sryo7"]
+atlas = ExtResource("5_wmsan")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gejvd"]
+atlas = ExtResource("5_wmsan")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6o5i"]
+atlas = ExtResource("5_wmsan")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw55n"]
 animations = [{
@@ -28,6 +45,23 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndem0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sryo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gejvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6o5i")
+}],
+"loop": true,
+"name": &"jerk",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.3,
@@ -90,8 +124,9 @@ drag_vertical_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hw55n")
-animation = &"Idle"
+animation = &"jerk"
 autoplay = "Idle"
+frame_progress = 0.965243
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 3)
