@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dckyqigowwh0r"]
+[gd_scene load_steps=27 format=3 uid="uid://dckyqigowwh0r"]
 
 [ext_resource type="Script" path="res://objects/transition/transition.gd" id="1_31m0e"]
 [ext_resource type="Texture2D" uid="uid://bocvpw0thmgfy" path="res://images/final flag/finalflag-anim-pack-growwing.png" id="3_32b7h"]
+[ext_resource type="Texture2D" uid="uid://wsgsp16pqscb" path="res://images/final flag/finalflag-anim-pack-razviv.png" id="3_nkx03"]
 [ext_resource type="Texture2D" uid="uid://divpkxqrpab4h" path="res://images/flag/flag-anim-pack-growwing.png" id="3_v6fyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whjsc"]
@@ -11,9 +12,17 @@ size = Vector2(20, 33.6)
 atlas = ExtResource("3_v6fyc")
 region = Rect2(0, 0, 120, 168)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ao0i7"]
-atlas = ExtResource("3_32b7h")
-region = Rect2(0, 504, 120, 168)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6wvq"]
+atlas = ExtResource("3_nkx03")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jadm8"]
+atlas = ExtResource("3_nkx03")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa3px"]
+atlas = ExtResource("3_nkx03")
+region = Rect2(0, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o8x2"]
 atlas = ExtResource("3_32b7h")
@@ -91,7 +100,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ao0i7")
+"texture": SubResource("AtlasTexture_w6wvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jadm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa3px")
 }],
 "loop": true,
 "name": &"idle_open",
@@ -165,7 +180,8 @@ debug_color = Color(0.589978, 0.547846, 5.77569e-07, 0.42)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, -80)
 sprite_frames = SubResource("SpriteFrames_nukcm")
-animation = &"up"
+animation = &"idle_open"
 autoplay = "idle_close"
+frame_progress = 0.0399157
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
