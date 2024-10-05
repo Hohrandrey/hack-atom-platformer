@@ -11,11 +11,15 @@ var spawn = Vector2()
 
 var moving_velosity_x = 0
 
+var jerk = 0
+var is_jerk = false
+
 const MAX_JUMP = 100
-const ACCELERATION_JUMP = 20.0
 const SLOWDOWN = 20.0
 const ACCELERATION = 10.0
 const MAX_SPEED = 250.0
+const SPEED_JERK = 500.0
+const MAX_JERK = 100
 
 func _ready() -> void:
 	spawn = Vector2($"../spawn/start_spawn".position)
@@ -59,6 +63,18 @@ func _physics_process(delta: float) -> void:
 		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if jerk < MAX_JERK:
+		if Input.is_action_just_pressed("jerk"):
+			is_jerk = true
+		if is_jerk:
+			speed = SPEED_JERK * old_direction
+			jerk += ACCELERATION
+	else:
+		is_jerk = false
+		if is_on_floor():
+			jerk = 0
+	
 	velocity.x = speed
 	velocity.x += moving_velosity_x
 	move_and_slide()
