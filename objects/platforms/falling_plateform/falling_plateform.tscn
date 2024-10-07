@@ -296,7 +296,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p2ww1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwhtn"]
-size = Vector2(94, 18)
+size = Vector2(96, 18)
 
 [node name="falling_plateform" type="CharacterBody2D"]
 script = ExtResource("1_sl0ra")

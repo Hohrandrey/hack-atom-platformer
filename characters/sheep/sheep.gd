@@ -90,8 +90,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	position = spawn
-	emit_signal("death")
+	if body.is_in_group("sheep"):
+		position = spawn
+		emit_signal("death")
 
 
 func _on_moving_platform_platform(velosity: Variant) -> void:
