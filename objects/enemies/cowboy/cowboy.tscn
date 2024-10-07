@@ -1,10 +1,13 @@
-[gd_scene load_steps=33 format=3 uid="uid://cgi3taxvj4tl2"]
+[gd_scene load_steps=35 format=3 uid="uid://cgi3taxvj4tl2"]
 
 [ext_resource type="Script" path="res://objects/enemies/cowboy/cowboy.gd" id="1_qpkyd"]
 [ext_resource type="Texture2D" uid="uid://b6gdb5uhxrydg" path="res://images/Cowboy/Cowboy (Animated Pixel Art)/Animation Sprite Sheets (PNG)/CowBoyIdle.png" id="2_kpch7"]
 [ext_resource type="Texture2D" uid="uid://cgyb6rf0io1m2" path="res://images/Cowboy/Cowboy (Animated Pixel Art)/Animation Sprite Sheets (PNG)/CowBoyDrawWeapon.png" id="3_0oe5x"]
 [ext_resource type="Texture2D" uid="uid://bcb2bgabo2kd3" path="res://images/Cowboy/Cowboy (Animated Pixel Art)/Animation Sprite Sheets (PNG)/CowBoyShoot.png" id="4_qx042"]
 [ext_resource type="Texture2D" uid="uid://ck8clrjlit4ru" path="res://images/Cowboy/Cowboy (Animated Pixel Art)/Animation Sprite Sheets (PNG)/CowBoyWalking.png" id="5_1r73f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_780ns"]
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_565t5"]
 atlas = ExtResource("2_kpch7")
@@ -199,17 +202,39 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_luhab"]
-size = Vector2(19, 40)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhrll"]
+radius = 8.5
+height = 61.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4lvu"]
+size = Vector2(22, 61)
 
 [node name="cowboy" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_qpkyd")
 
+[node name="Hp" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -54.0
+offset_right = 20.0
+offset_bottom = -31.0
+label_settings = SubResource("LabelSettings_780ns")
+horizontal_alignment = 1
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bkjpq")
 animation = &"idle"
-frame_progress = 0.13431
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 4)
-shape = SubResource("RectangleShape2D_luhab")
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_vhrll")
+
+[node name="cowboy_hit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cowboy_hit"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_p4lvu")
+debug_color = Color(0.723695, 0.477475, 0, 0.42)
+
+[connection signal="area_entered" from="cowboy_hit" to="." method="_on_cowboy_hit_area_entered"]

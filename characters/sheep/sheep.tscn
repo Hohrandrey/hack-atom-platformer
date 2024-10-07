@@ -108,12 +108,14 @@ animations = [{
 size = Vector2(23.2804, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qdoy"]
-size = Vector2(17, 1)
+size = Vector2(20, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad7tv"]
-size = Vector2(11.75, 27)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8et7"]
+radius = 8.0
+height = 22.0
 
 [node name="sheep" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_h2ofo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -127,9 +129,9 @@ drag_vertical_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hw55n")
-animation = &"jerk"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.480242
+frame_progress = 0.557443
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 3)
@@ -140,15 +142,15 @@ one_way_collision_margin = 0.0
 [node name="Celling_check" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Celling_check"]
-position = Vector2(-5.5, -9.5)
+position = Vector2(-6, -9.5)
 shape = SubResource("RectangleShape2D_5qdoy")
 debug_color = Color(0.981877, 0, 0.367199, 0.42)
 
 [node name="Damage" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
-position = Vector2(11.125, -0.5)
-shape = SubResource("RectangleShape2D_ad7tv")
+position = Vector2(5, 0)
+shape = SubResource("CapsuleShape2D_e8et7")
 debug_color = Color(0.788447, 0.0440663, 0.273258, 0.42)
 
 [connection signal="body_entered" from="Celling_check" to="." method="_on_celling_check_body_entered"]

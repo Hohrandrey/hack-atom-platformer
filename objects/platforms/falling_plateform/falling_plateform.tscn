@@ -299,6 +299,7 @@ sources/0 = SubResource("TileSetAtlasSource_p2ww1")
 size = Vector2(96, 18)
 
 [node name="falling_plateform" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_sl0ra")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -307,6 +308,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(2, 917504, 8, 65533, 786432, 8, 65534, 851968, 8, 65535, 851968, 8, 0, 851968, 8, 1, 851968, 8)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 8)

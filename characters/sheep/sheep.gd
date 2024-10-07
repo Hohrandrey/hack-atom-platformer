@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal death
 
+var damage = 1
 var speed = 0.0
 var direction = 0
 var old_direction = 1
@@ -66,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("Idle")
-		# Add the gravity.
+	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
