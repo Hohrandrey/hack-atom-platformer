@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot_1",
-"speed": 20.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -187,7 +187,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot_2",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -247,8 +247,7 @@ horizontal_alignment = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bkjpq")
-animation = &"walk"
-frame_progress = 0.236703
+animation = &"shoot_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

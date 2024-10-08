@@ -19,7 +19,7 @@ var raycast: RayCast2D
 var line: Line2D
 var sheep_position = Vector2()
 
-const MAX_HP = 50
+const MAX_HP = 500
 const SPEED = 100.0
 const SPEED_PUSH = 250.0
 const ACCELERATION = 10.0
