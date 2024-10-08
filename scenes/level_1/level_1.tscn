@@ -449,7 +449,7 @@ vector = Vector2(1, 0)
 [node name="spawn" type="Node2D" parent="."]
 
 [node name="start_spawn" type="Marker2D" parent="spawn"]
-position = Vector2(6200, 555)
+position = Vector2(150, 555)
 
 [node name="spawn" parent="spawn" instance=ExtResource("10_h4nud")]
 position = Vector2(4424, 588)
@@ -502,4 +502,3 @@ position = Vector2(6001, 588)
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform12" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="falling_platforms/falling_plateform13" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="cowboy/cowboy" method="_on_sheep_death"]
-[connection signal="hit" from="cowboy/cowboy" to="sheep" method="_on_cowboy_hit"]

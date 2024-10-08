@@ -90,10 +90,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func _death():
+	position = spawn
+	emit_signal("death")
+
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"):
-		position = spawn
-		emit_signal("death")
+		_death()
 
 
 func _on_moving_platform_platform(velosity: Variant) -> void:
@@ -110,14 +114,8 @@ func _on_spawn_new_spawn(x: Variant, y: Variant) -> void:
 
 func _on_celling_check_body_entered(body: Node2D) -> void:
 	if not(body.is_in_group("sheep")) and is_on_floor():
-		position = spawn
-		emit_signal("death")
+		_death()
 
 
 func _on_transition_end() -> void:
 	is_end = true
-
-
-func _on_cowboy_hit() -> void:
-	position = spawn
-	emit_signal("death")

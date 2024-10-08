@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal hit
-
 var hp = MAX_HP
 
 var spawn = Vector2()
@@ -36,11 +34,17 @@ func _ready() -> void:
 	point.append($"../pos2")
 
 
-func shoot():
+func shoot() -> void:
+	var bodies = $AreaAim.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("sheep"):
+			$"../../sheep".position = $"../../sheep".spawn
+			hp = MAX_HP
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.is_in_group("sheep"):
-			emit_signal("hit")
+			$"../../sheep".position = $"../../sheep".spawn
+			hp = MAX_HP
 	is_shoot = false
 	start_shoot = false
 	line.clear_points()
@@ -72,7 +76,6 @@ func _physics_process(delta: float) -> void:
 			point[1] = temp
 		if not(start_shoot) and $Shoot.is_stopped():
 			$Shoot.start()
-			print("YES")
 		if start_shoot:
 			if not(is_shoot):
 				$AnimatedSprite2D.play("aim")
@@ -87,6 +90,7 @@ func _physics_process(delta: float) -> void:
 			if is_shoot and is_sheep:
 				if is_aim:
 					sheep_position = $"../../sheep".position - position
+					$AreaAim.position = sheep_position
 					raycast.target_position = sheep_position  # Устанавливаем направление
 					raycast.force_raycast_update()
 					line.points = [Vector2.ZERO, sheep_position]

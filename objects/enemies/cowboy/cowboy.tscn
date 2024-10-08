@@ -227,7 +227,7 @@ height = 61.0
 size = Vector2(22, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mporg"]
-size = Vector2(1563, 195)
+size = Vector2(1563, 318)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gllpf"]
 radius = 12.0
@@ -248,7 +248,7 @@ horizontal_alignment = 1
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bkjpq")
 animation = &"walk"
-frame_progress = 0.927682
+frame_progress = 0.236703
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -263,7 +263,6 @@ shape = SubResource("RectangleShape2D_p4lvu")
 debug_color = Color(0.723695, 0.477475, 0, 0.42)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, -50)
 collision_mask = 3
 hit_from_inside = true
 
@@ -275,18 +274,18 @@ default_color = Color(1, 0, 0, 0.501961)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SearchSheep"]
-position = Vector2(2.5, -61.5)
 shape = SubResource("RectangleShape2D_mporg")
 debug_color = Color(0, 0.494118, 0.576471, 0.156863)
 
 [node name="AreaAim" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAim"]
 shape = SubResource("CircleShape2D_gllpf")
 debug_color = Color(0.992328, 0, 0.253559, 0.42)
 
 [node name="Shoot" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [connection signal="area_entered" from="cowboy_hit" to="." method="_on_cowboy_hit_area_entered"]
