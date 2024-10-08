@@ -131,7 +131,7 @@ drag_vertical_enabled = true
 sprite_frames = SubResource("SpriteFrames_hw55n")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.557443
+frame_progress = 0.953603
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 3)

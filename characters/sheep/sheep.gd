@@ -116,3 +116,8 @@ func _on_celling_check_body_entered(body: Node2D) -> void:
 
 func _on_transition_end() -> void:
 	is_end = true
+
+
+func _on_cowboy_hit() -> void:
+	position = spawn
+	emit_signal("death")

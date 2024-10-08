@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cgi3taxvj4tl2"]
+[gd_scene load_steps=38 format=3 uid="uid://cgi3taxvj4tl2"]
 
 [ext_resource type="Script" path="res://objects/enemies/cowboy/cowboy.gd" id="1_qpkyd"]
 [ext_resource type="Texture2D" uid="uid://b6gdb5uhxrydg" path="res://images/Cowboy/Cowboy (Animated Pixel Art)/Animation Sprite Sheets (PNG)/CowBoyIdle.png" id="2_kpch7"]
@@ -8,6 +8,30 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_780ns"]
 font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y2xw"]
+atlas = ExtResource("3_0oe5x")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4ohv"]
+atlas = ExtResource("3_0oe5x")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx6kk"]
+atlas = ExtResource("3_0oe5x")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdkms"]
+atlas = ExtResource("3_0oe5x")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86au6"]
+atlas = ExtResource("3_0oe5x")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks0wq"]
+atlas = ExtResource("3_0oe5x")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_565t5"]
 atlas = ExtResource("2_kpch7")
@@ -37,43 +61,23 @@ region = Rect2(240, 0, 48, 48)
 atlas = ExtResource("2_kpch7")
 region = Rect2(288, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnurd"]
-atlas = ExtResource("3_0oe5x")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xw3a5"]
-atlas = ExtResource("3_0oe5x")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vujrw"]
-atlas = ExtResource("3_0oe5x")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3ox6"]
-atlas = ExtResource("3_0oe5x")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1q2v"]
-atlas = ExtResource("3_0oe5x")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jxfi1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mosk3"]
 atlas = ExtResource("4_qx042")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xf7k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8omn"]
 atlas = ExtResource("4_qx042")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfqrf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhbw6"]
 atlas = ExtResource("4_qx042")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0sl3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_noyly"]
 atlas = ExtResource("4_qx042")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yn260"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g6an"]
 atlas = ExtResource("4_qx042")
 region = Rect2(192, 0, 48, 48)
 
@@ -113,6 +117,29 @@ region = Rect2(336, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8y2xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4ohv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx6kk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdkms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86au6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks0wq")
+}],
+"loop": false,
+"name": &"aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_565t5")
 }, {
 "duration": 1.0,
@@ -139,38 +166,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rnurd")
+"texture": SubResource("AtlasTexture_mosk3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xw3a5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vujrw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l3ox6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p1q2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jxfi1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2xf7k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vfqrf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0sl3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yn260")
+"texture": SubResource("AtlasTexture_t8omn")
 }],
 "loop": false,
-"name": &"shoot",
-"speed": 8.0
+"name": &"shoot_1",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhbw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noyly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g6an")
+}],
+"loop": false,
+"name": &"shoot_2",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -209,6 +226,12 @@ height = 61.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4lvu"]
 size = Vector2(22, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mporg"]
+size = Vector2(1563, 195)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gllpf"]
+radius = 12.0
+
 [node name="cowboy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_qpkyd")
@@ -224,17 +247,49 @@ horizontal_alignment = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bkjpq")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.927682
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_vhrll")
 
 [node name="cowboy_hit" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cowboy_hit"]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_p4lvu")
 debug_color = Color(0.723695, 0.477475, 0, 0.42)
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -50)
+collision_mask = 3
+hit_from_inside = true
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 3.0
+default_color = Color(1, 0, 0, 0.501961)
+
+[node name="SearchSheep" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchSheep"]
+position = Vector2(2.5, -61.5)
+shape = SubResource("RectangleShape2D_mporg")
+debug_color = Color(0, 0.494118, 0.576471, 0.156863)
+
+[node name="AreaAim" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAim"]
+shape = SubResource("CircleShape2D_gllpf")
+debug_color = Color(0.992328, 0, 0.253559, 0.42)
+
+[node name="Shoot" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="cowboy_hit" to="." method="_on_cowboy_hit_area_entered"]
+[connection signal="body_entered" from="SearchSheep" to="." method="_on_search_sheep_body_entered"]
+[connection signal="body_exited" from="SearchSheep" to="." method="_on_search_sheep_body_exited"]
+[connection signal="timeout" from="Shoot" to="." method="_on_shoot_timeout"]
