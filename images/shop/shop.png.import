@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmrue8i8j2ifj"
-path="res://.godot/imported/sheep-kick-anim-pack.png-59de0725d93786ee6d3ab553b7526244.ctex"
+uid="uid://dgaak5uixta1e"
+path="res://.godot/imported/shop.png-a9fca666c4220146e8fd1f08dfb3e35c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Тестовый перс/sheep-kick-anim-pack.png"
-dest_files=["res://.godot/imported/sheep-kick-anim-pack.png-59de0725d93786ee6d3ab553b7526244.ctex"]
+source_file="res://images/shop/shop.png"
+dest_files=["res://.godot/imported/shop.png-a9fca666c4220146e8fd1f08dfb3e35c.ctex"]
 
 [params]
 

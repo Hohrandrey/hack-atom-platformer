@@ -86,6 +86,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_end:
 		velocity = Vector2(0, 0)
+		$AnimatedSprite2D.flip_h = false
 	
 	move_and_slide()
 

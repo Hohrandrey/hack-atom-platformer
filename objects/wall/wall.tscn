@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4aqr2hytdqj3"]
+[gd_scene load_steps=4 format=3 uid="uid://bphg1ofvpte7x"]
 
-[ext_resource type="Script" path="res://objects/platforms/falling_plateform/falling_plateform.gd" id="1_sl0ra"]
-[ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="2_4vpjo"]
+[ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="1_bvmkw"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfuf7"]
-texture = ExtResource("2_4vpjo")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1mrp"]
+texture = ExtResource("1_bvmkw")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -291,27 +290,14 @@ texture = ExtResource("2_4vpjo")
 20:10/0 = 0
 20:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_sk2gd"]
+[sub_resource type="TileSet" id="TileSet_rpljj"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_pfuf7")
+sources/0 = SubResource("TileSetAtlasSource_c1mrp")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwhtn"]
-size = Vector2(96, 18)
-
-[node name="falling_plateform" type="CharacterBody2D"]
-collision_mask = 3
-script = ExtResource("1_sl0ra")
+[node name="Wall" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_sk2gd")
+position = Vector2(-1, 0)
+tile_set = SubResource("TileSet_rpljj")
 format = 2
-layer_0/tile_data = PackedInt32Array(2, 917504, 8, 65533, 786432, 8, 65534, 851968, 8, 65535, 851968, 8, 0, 851968, 8, 1, 851968, 8)
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_lwhtn")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+layer_0/tile_data = PackedInt32Array(-3, 1179648, 8, -2, 1179648, 8, -1, 1179648, 8, -65536, 1179648, 8, -65535, 1179648, 8, -65534, 1245184, 8, -4, 1114112, 8)

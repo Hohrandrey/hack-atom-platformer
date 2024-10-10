@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://doypa4iy1cctp"]
+[gd_scene load_steps=21 format=3 uid="uid://doypa4iy1cctp"]
 
 [ext_resource type="Texture2D" uid="uid://bu7k2iaecwjt8" path="res://images/Тестовый перс/sheep-idle/sheep-idle.png" id="1_0n53y"]
 [ext_resource type="Script" path="res://characters/sheep/sheep.gd" id="1_h2ofo"]
@@ -6,29 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://bb4virc6633oh" path="res://images/Тестовый перс/sheep-idle/sheep-idle1.png" id="3_vj36q"]
 [ext_resource type="Texture2D" uid="uid://06ss133vcs50" path="res://images/Тестовый перс/run/sheep-run-1.png" id="4_g8uko"]
 [ext_resource type="Texture2D" uid="uid://cdjimnyo0qkmk" path="res://images/Тестовый перс/Jump/sheep-jump-1.png" id="4_rtyay"]
+[ext_resource type="Texture2D" uid="uid://cww3h7vw1r1mx" path="res://images/Тестовый перс/sheep-kick-anim-pack (2).png" id="5_2oixq"]
 [ext_resource type="Texture2D" uid="uid://csourayhfrg4d" path="res://images/Тестовый перс/Jump/sheep-jump-2.png" id="5_eo3lw"]
 [ext_resource type="Texture2D" uid="uid://bs1315ghx5lij" path="res://images/Тестовый перс/run/sheep-run-2.png" id="5_sthpb"]
-[ext_resource type="Texture2D" uid="uid://dmrue8i8j2ifj" path="res://images/Тестовый перс/sheep-kick-anim-pack.png" id="5_wmsan"]
 [ext_resource type="Texture2D" uid="uid://bve1ph71ky86g" path="res://images/Тестовый перс/Jump/sheep-jump-3.png" id="6_n62wp"]
 [ext_resource type="Texture2D" uid="uid://bknjnfta0543f" path="res://images/Тестовый перс/run/sheep-run-3.png" id="6_wpmkw"]
 [ext_resource type="Texture2D" uid="uid://cgnwlry4rcxx2" path="res://images/Тестовый перс/run/sheep-run-4.png" id="7_q30xo"]
 [ext_resource type="Texture2D" uid="uid://df7hfw7eoavuo" path="res://images/Тестовый перс/run/sheep-run-5.png" id="8_q037n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndem0"]
-atlas = ExtResource("5_wmsan")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5keiv"]
+atlas = ExtResource("5_2oixq")
+region = Rect2(0, 0, 192, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sryo7"]
-atlas = ExtResource("5_wmsan")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c22m"]
+atlas = ExtResource("5_2oixq")
+region = Rect2(0, 100, 192, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gejvd"]
-atlas = ExtResource("5_wmsan")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6o5i"]
-atlas = ExtResource("5_wmsan")
-region = Rect2(64, 64, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rstu"]
+atlas = ExtResource("5_2oixq")
+region = Rect2(0, 200, 192, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw55n"]
 animations = [{
@@ -48,16 +44,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ndem0")
+"texture": SubResource("AtlasTexture_5keiv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sryo7")
+"texture": SubResource("AtlasTexture_8c22m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gejvd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v6o5i")
+"texture": SubResource("AtlasTexture_1rstu")
 }],
 "loop": true,
 "name": &"jerk",
@@ -99,7 +92,7 @@ animations = [{
 "duration": 0.5,
 "texture": ExtResource("8_q037n")
 }],
-"loop": false,
+"loop": true,
 "name": &"run",
 "speed": 5.0
 }]
@@ -122,6 +115,7 @@ script = ExtResource("1_h2ofo")
 zoom = Vector2(2, 2)
 process_callback = 0
 limit_left = 0
+limit_right = 10500
 limit_bottom = 645
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -129,9 +123,9 @@ drag_vertical_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hw55n")
-animation = &"Idle"
+animation = &"run"
 autoplay = "Idle"
-frame_progress = 0.953603
+frame_progress = 0.170016
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 3)

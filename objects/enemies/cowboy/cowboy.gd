@@ -19,7 +19,7 @@ var raycast: RayCast2D
 var line: Line2D
 var sheep_position = Vector2()
 
-const MAX_HP = 500
+const MAX_HP = 3 #2147483647
 const SPEED = 100.0
 const SPEED_PUSH = 250.0
 const ACCELERATION = 10.0
@@ -53,8 +53,8 @@ func shoot() -> void:
 func _physics_process(delta: float) -> void:
 	if position.y >= 666:
 		position = spawn
-	$Hp.text = str(hp)
 	if hp <= 0:
+		$"../../Wall".queue_free()
 		queue_free()
 	
 	if not is_on_floor():

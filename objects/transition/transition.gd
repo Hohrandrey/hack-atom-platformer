@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not($AnimatedSprite2D.is_playing()) and is_tuch:
 		$AnimatedSprite2D.play("idle")
-		get_tree().change_scene_to_file("res://scenes/level_1/level_1.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_2/level_2.tscn")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
