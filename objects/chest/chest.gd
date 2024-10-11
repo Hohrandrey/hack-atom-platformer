@@ -4,28 +4,43 @@ var aes = AESContext.new()
 var text
 var edit
 
-var decrypted_ecb
+var text_link = "/home/ilya/Документы/Hackaton/text.txt"
+
 var encrypted_ecb
 
+# sheepiscool
+const TEXT = "92be66296a24458eafc5594169515a57"
 
 func _ready() -> void:
-	text = $Label
 	edit = $TextEdit
-	text.visible = false
 	edit.visible = false
 
 
+func save_to_file(content, link):
+	var file = FileAccess.open(link, FileAccess.WRITE)
+	file.store_string(content)
+
+func load_from_file(link):
+	var file = FileAccess.open(link, FileAccess.READ)
+	var content = file.get_as_text()
+	return content
+
+
 func _process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("ui_accept"):  # Проверка нажатия клавиши (например, Enter)
 		encrypt_data()
+		if text == TEXT:
+			text = "flag"
+		else:
+			text = TEXT + '/n' + text
+		save_to_file(text, text_link)
 		edit.clear()
 
 
 func encrypt_data() -> void:
 	var key = "Afrn"  # Ключ длиной 5 байт (32 бита)
 	var iv = "TheSocietyofFact"  # IV должен быть ровно 16 байт
-	var data = edit.text  # Получение текста из TextEdit
+	var data = edit.text  # Получение текста
 
 	# Убедитесь, что длина данных кратна 16, добавьте паддинг, если нужно
 	data = pad_data(data)
@@ -38,13 +53,8 @@ func encrypt_data() -> void:
 	encrypted_ecb  = aes.update(data.to_utf8_buffer())
 	aes.finish()
 
-	# Расшифровка в режиме ECB
-	aes.start(AESContext.MODE_ECB_DECRYPT, extended_key.to_utf8_buffer())
-	decrypted_ecb = aes.update(encrypted_ecb)
-	aes.finish()
-
 	# Обновление текста в Label
-	text.text = "Зашифрованный текст: " + encrypted_ecb.hex_encode() + "\nРасшифрованный текст: " + decrypted_ecb.get_string_from_utf8()
+	text = encrypted_ecb.hex_encode()
 
 
 func pad_data(data: String) -> String:
@@ -63,11 +73,9 @@ func pad_edges(key: String) -> String:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"):
-		text.visible = true
 		edit.visible = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("sheep"):
-		text.visible = false
 		edit.visible = false

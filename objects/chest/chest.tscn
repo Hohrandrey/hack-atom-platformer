@@ -55,7 +55,7 @@ script = ExtResource("1_1j44u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, -7)
 sprite_frames = SubResource("SpriteFrames_ter76")
-frame_progress = 0.951521
+frame_progress = 0.106624
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
@@ -69,12 +69,6 @@ offset_left = -104.0
 offset_top = -84.0
 offset_right = 104.0
 offset_bottom = -45.0
-
-[node name="Label" type="Label" parent="."]
-offset_left = -104.0
-offset_top = -277.0
-offset_right = 104.0
-offset_bottom = -164.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

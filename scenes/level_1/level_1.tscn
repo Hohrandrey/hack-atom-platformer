@@ -408,7 +408,7 @@ position = Vector2(8980, 552)
 
 [node name="moving_platforms" type="Node2D" parent="."]
 
-[node name="moving_platform" parent="moving_platforms" instance=ExtResource("2_2v54s")]
+[node name="moving_platform" parent="moving_platforms" groups=["save"] instance=ExtResource("2_2v54s")]
 position = Vector2(1617, 384)
 vector = Vector2(1, 0)
 

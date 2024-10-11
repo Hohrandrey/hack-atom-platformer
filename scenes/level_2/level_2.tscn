@@ -390,7 +390,7 @@ visibility_layer = 3
 position = Vector2(10721, 319)
 scale = Vector2(0.75, 0.75)
 
-[node name="Sign" parent="." instance=ExtResource("15_l4kg4")]
+[node name="Sign" parent="." groups=["save"] instance=ExtResource("15_l4kg4")]
 position = Vector2(9677, 301)
 
 [node name="FallingPlatform" type="Node2D" parent="."]

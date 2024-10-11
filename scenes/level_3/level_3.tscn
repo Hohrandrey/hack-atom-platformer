@@ -424,7 +424,7 @@ sources/0 = SubResource("TileSetAtlasSource_6sa78")
 sources/1 = SubResource("TileSetAtlasSource_18eky")
 sources/2 = SubResource("TileSetAtlasSource_27m8y")
 
-[node name="level_3" type="Node2D"]
+[node name="level_3" type="Node2D" groups=["save"]]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -467,9 +467,6 @@ motion_mirroring = Vector2(1152, 0)
 scale = Vector2(4, 3.115)
 texture = ExtResource("5_4jgih")
 centered = false
-
-[node name="sheep" parent="." instance=ExtResource("7_48pr8")]
-position = Vector2(186, 577)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
@@ -591,6 +588,22 @@ position = Vector2(8432, 576)
 [node name="Chest" parent="." instance=ExtResource("16_u4kuk")]
 position = Vector2(7464, 568)
 
+[node name="sheep" parent="." instance=ExtResource("7_48pr8")]
+position = Vector2(7520, 560)
+
+[connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
+[connection signal="platform" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_platform"]
+[connection signal="stop" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_stop"]
+[connection signal="platform" from="MovingPlatform/moving_platform2" to="sheep" method="_on_moving_platform_platform"]
+[connection signal="stop" from="MovingPlatform/moving_platform2" to="sheep" method="_on_moving_platform_stop"]
+[connection signal="platform" from="MovingPlatform/moving_platform3" to="sheep" method="_on_moving_platform_platform"]
+[connection signal="stop" from="MovingPlatform/moving_platform3" to="sheep" method="_on_moving_platform_stop"]
+[connection signal="platform" from="MovingPlatform/moving_platform4" to="sheep" method="_on_moving_platform_platform"]
+[connection signal="stop" from="MovingPlatform/moving_platform4" to="sheep" method="_on_moving_platform_stop"]
+[connection signal="platform" from="MovingPlatform/moving_platform5" to="sheep" method="_on_moving_platform_platform"]
+[connection signal="stop" from="MovingPlatform/moving_platform5" to="sheep" method="_on_moving_platform_stop"]
+[connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
+[connection signal="end" from="spawn/transition" to="sheep" method="_on_transition_end"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform4" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform5" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform6" method="_on_sheep_death"]
@@ -605,16 +618,3 @@ position = Vector2(7464, 568)
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform15" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform21" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="Enemies/dog2" method="_on_sheep_death"]
-[connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
-[connection signal="platform" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_platform"]
-[connection signal="stop" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="platform" from="MovingPlatform/moving_platform2" to="sheep" method="_on_moving_platform_platform"]
-[connection signal="stop" from="MovingPlatform/moving_platform2" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="platform" from="MovingPlatform/moving_platform3" to="sheep" method="_on_moving_platform_platform"]
-[connection signal="stop" from="MovingPlatform/moving_platform3" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="platform" from="MovingPlatform/moving_platform4" to="sheep" method="_on_moving_platform_platform"]
-[connection signal="stop" from="MovingPlatform/moving_platform4" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="platform" from="MovingPlatform/moving_platform5" to="sheep" method="_on_moving_platform_platform"]
-[connection signal="stop" from="MovingPlatform/moving_platform5" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
-[connection signal="end" from="spawn/transition" to="sheep" method="_on_transition_end"]
