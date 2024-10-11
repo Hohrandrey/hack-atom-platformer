@@ -12,7 +12,7 @@ var is_sheep = false  # Есть ли овца в зоне видимости
 var is_back = false  # Флаг, указывающий, что персонажа оттолкнули назад
 
 const ACCELERATION = 10.0
-const MAX_JUMP = 100
+const MAX_JUMP = 120
 const ANIM = ["black", "blue", "orange", "standart"]
 const MAX_HP = 1  # Максимальный уровень здоровья
 const SPEED = 250.0  # Скорость перемещения

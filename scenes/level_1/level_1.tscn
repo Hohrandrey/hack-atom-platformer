@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bb1u4ejhx2my8" path="res://images/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="3_j4sp5"]
 [ext_resource type="Texture2D" uid="uid://4qbnuu66a7d2" path="res://images/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="4_wic68"]
 [ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="6_hnpfj"]
-[ext_resource type="PackedScene" uid="uid://bphg1ofvpte7x" path="res://objects/wall/wall.tscn" id="7_lgfsw"]
+[ext_resource type="PackedScene" uid="uid://bphg1ofvpte7x" path="res://objects/barriers/wall/wall.tscn" id="7_lgfsw"]
 [ext_resource type="PackedScene" uid="uid://doypa4iy1cctp" path="res://characters/sheep/sheep.tscn" id="7_x8hn6"]
 [ext_resource type="PackedScene" uid="uid://4aqr2hytdqj3" path="res://objects/platforms/falling_plateform/falling_plateform.tscn" id="9_68e11"]
 [ext_resource type="PackedScene" uid="uid://df0ey4w5h5c6c" path="res://objects/platforms/moving_platform/stop_platform.tscn" id="9_gj3w3"]

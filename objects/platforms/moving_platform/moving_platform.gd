@@ -6,6 +6,8 @@ signal stop
 @export var vector = Vector2()
 @export var is_moving = true
 
+var is_mov
+
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var direction = 0
@@ -15,6 +17,7 @@ var is_platform = false
 
 
 func _ready() -> void:
+	is_mov = not(is_moving)
 	add_to_group("m_platform")
 	$Area2D.add_to_group("moving_platform")
 	spawn = position
@@ -39,15 +42,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_moving_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"):
 		is_platform = true
-		is_moving = true
-		direction = 1
+		if is_mov:
+			is_moving = true
+			direction = 1
 
 
 func _on_moving_area_body_exited(body: Node2D) -> void:
 	is_platform = false
-	is_moving = false
-	direction = 0
 	emit_signal("stop")
+	if is_mov:
+		is_moving = false
+		direction = 0
 
 
 func _on_stop_platform_stop() -> void:

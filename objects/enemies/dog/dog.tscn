@@ -452,7 +452,7 @@ size = Vector2(27, 20)
 size = Vector2(43, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byy1s"]
-radius = 298.0
+radius = 230.002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c8eo"]
 size = Vector2(20, 30)
@@ -466,7 +466,7 @@ script = ExtResource("1_f1jqy")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_rer13")
 animation = &"idle_standart"
-frame_progress = 0.873096
+frame_progress = 0.264393
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 14)

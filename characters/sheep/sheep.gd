@@ -18,6 +18,8 @@ var is_jerk = false
 var is_death = false
 var is_end = false
 
+var current_scene
+
 const MAX_JUMP = 100
 const SLOWDOWN = 20.0
 const ACCELERATION = 10.0
@@ -26,8 +28,13 @@ const SPEED_JERK = 500.0
 const MAX_JERK = 100
 
 func _ready() -> void:
+	current_scene = get_tree().current_scene
 	spawn = Vector2($"../spawn/start_spawn".position)
 	add_to_group("sheep")
+	if current_scene.name == "level_1":
+		$Camera2D.limit_right = 10500
+	elif current_scene.name == "level_2":
+		$Camera2D.limit_right = 10000
 
 func _physics_process(delta: float) -> void:
 	if is_death:
@@ -127,3 +134,7 @@ func _on_celling_check_body_entered(body: Node2D) -> void:
 
 func _on_transition_end() -> void:
 	is_end = true
+
+
+func _on_sign_door_open() -> void:
+	$Camera2D.limit_right = 11000

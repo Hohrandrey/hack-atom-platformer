@@ -6,4 +6,4 @@ func _on_quit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/level_2/level_2.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_1/level_1.tscn")
