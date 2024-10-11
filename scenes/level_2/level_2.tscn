@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://h0gjmyodd7ii"]
+[gd_scene load_steps=18 format=3 uid="uid://h0gjmyodd7ii"]
 
 [ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="2_ku4uq"]
 [ext_resource type="PackedScene" uid="uid://doypa4iy1cctp" path="res://characters/sheep/sheep.tscn" id="3_bd2vk"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://hwmgqyuysuam" path="res://objects/platforms/moving_platform/moving_platform.tscn" id="10_degkr"]
 [ext_resource type="PackedScene" uid="uid://df0ey4w5h5c6c" path="res://objects/platforms/moving_platform/stop_platform.tscn" id="11_g6l7e"]
 [ext_resource type="PackedScene" uid="uid://bst1t6o1aot2b" path="res://objects/enemies/dog/dog.tscn" id="13_kbln0"]
+[ext_resource type="PackedScene" uid="uid://dckyqigowwh0r" path="res://objects/transition/transition.tscn" id="14_fgqpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0m5a"]
 texture = ExtResource("2_ku4uq")
@@ -385,9 +386,6 @@ position = Vector2(5744, 320)
 [node name="spawn2" parent="spawn" instance=ExtResource("7_5v3x8")]
 position = Vector2(9944, 620)
 
-[node name="spawn3" parent="spawn" instance=ExtResource("7_5v3x8")]
-position = Vector2(10733, 124)
-
 [node name="sheep" parent="." instance=ExtResource("3_bd2vk")]
 position = Vector2(168, 576)
 
@@ -518,18 +516,19 @@ position = Vector2(7733, 183)
 [node name="dog4" parent="Enemies" instance=ExtResource("13_kbln0")]
 position = Vector2(8321, 188)
 
+[node name="transition" parent="." instance=ExtResource("14_fgqpn")]
+position = Vector2(10963, 125)
+
 [connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
 [connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
 [connection signal="new_spawn" from="spawn/spawn2" to="sheep" method="_on_spawn_new_spawn"]
-[connection signal="new_spawn" from="spawn/spawn3" to="sheep" method="_on_spawn_new_spawn"]
+[connection signal="death" from="sheep" to="sheep/falling_plateform15" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform2" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform3" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform4" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform5" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform6" method="_on_sheep_death"]
-[connection signal="death" from="sheep" to="FallingPlatform/falling_plateform13" method="_on_sheep_death"]
-[connection signal="death" from="sheep" to="FallingPlatform/falling_plateform14" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform16" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform17" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform19" method="_on_sheep_death"]
@@ -537,12 +536,13 @@ position = Vector2(8321, 188)
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform21" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform22" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform18" method="_on_sheep_death"]
+[connection signal="death" from="sheep" to="FallingPlatform/falling_plateform13" method="_on_sheep_death"]
+[connection signal="death" from="sheep" to="FallingPlatform/falling_plateform14" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform15" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="Enemies/dog" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="Enemies/dog2" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="Enemies/dog3" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="Enemies/dog4" method="_on_sheep_death"]
-[connection signal="death" from="sheep" to="sheep/falling_plateform15" method="_on_sheep_death"]
 [connection signal="platform" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_platform"]
 [connection signal="stop" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_stop"]
 [connection signal="platform" from="MovingPlatform/moving_platform10" to="sheep" method="_on_moving_platform_platform"]
