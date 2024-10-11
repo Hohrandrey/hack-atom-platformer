@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-signal platform(velosity)
+signal platform(velosityz)
 signal stop
 
 @export var vector = Vector2()
 @export var is_moving = true
+@export var speed = 150.0
 
 var is_mov
 
-const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var direction = 0
 
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		position = spawn
 	if is_platform:
 		emit_signal("platform", velocity.x)
-	velocity = vector * direction * SPEED
+	velocity = vector * direction * speed
 	move_and_slide()
 
 

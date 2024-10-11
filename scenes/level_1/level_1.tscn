@@ -440,9 +440,6 @@ vector = Vector2(1, 0)
 
 [node name="spawn" type="Node2D" parent="."]
 
-[node name="start_spawn" type="Marker2D" parent="spawn"]
-position = Vector2(150, 555)
-
 [node name="spawn" parent="spawn" instance=ExtResource("10_h4nud")]
 position = Vector2(4424, 588)
 

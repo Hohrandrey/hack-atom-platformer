@@ -29,12 +29,14 @@ const MAX_JERK = 100
 
 func _ready() -> void:
 	current_scene = get_tree().current_scene
-	spawn = Vector2($"../spawn/start_spawn".position)
+	spawn = position
 	add_to_group("sheep")
 	if current_scene.name == "level_1":
 		$Camera2D.limit_right = 10500
 	elif current_scene.name == "level_2":
 		$Camera2D.limit_right = 10000
+	elif current_scene.name == "level_3":
+		$Camera2D.limit_right = 8700
 
 func _physics_process(delta: float) -> void:
 	if is_death:

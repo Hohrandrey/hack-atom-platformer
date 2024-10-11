@@ -382,11 +382,13 @@ debug_color = Color(0.991892, 0, 0.259521, 0.42)
 
 [node name="spawn" type="Node2D" parent="."]
 
-[node name="start_spawn" type="Marker2D" parent="spawn"]
-position = Vector2(218, 575)
-
 [node name="spawn" parent="spawn" instance=ExtResource("7_5v3x8")]
 position = Vector2(5744, 320)
+
+[node name="transition" parent="spawn" instance=ExtResource("16_yuhr5")]
+visibility_layer = 3
+position = Vector2(10721, 319)
+scale = Vector2(0.75, 0.75)
 
 [node name="Sign" parent="." instance=ExtResource("15_l4kg4")]
 position = Vector2(9677, 301)
@@ -465,16 +467,12 @@ position = Vector2(7733, 183)
 [node name="dog4" parent="Enemies" instance=ExtResource("13_kbln0")]
 position = Vector2(8329, 183)
 
-[node name="transition" parent="." instance=ExtResource("16_yuhr5")]
-visibility_layer = 3
-position = Vector2(10721, 319)
-scale = Vector2(0.75, 0.75)
-
 [node name="sheep" parent="." instance=ExtResource("3_bd2vk")]
 position = Vector2(218, 575)
 
 [connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
 [connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
+[connection signal="end" from="spawn/transition" to="sheep" method="_on_transition_end"]
 [connection signal="door_open" from="Sign" to="Door" method="_on_sign_door_open"]
 [connection signal="door_open" from="Sign" to="sheep" method="_on_sign_door_open"]
 [connection signal="platform" from="MovingPlatform/moving_platform" to="sheep" method="_on_moving_platform_platform"]
@@ -485,7 +483,6 @@ position = Vector2(218, 575)
 [connection signal="stop" from="MovingPlatform/moving_platform2" to="sheep" method="_on_moving_platform_stop"]
 [connection signal="platform" from="MovingPlatform/moving_platform3" to="sheep" method="_on_moving_platform_platform"]
 [connection signal="stop" from="MovingPlatform/moving_platform3" to="sheep" method="_on_moving_platform_stop"]
-[connection signal="end" from="transition" to="sheep" method="_on_transition_end"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform2" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform3" method="_on_sheep_death"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr07fo5t4pe2j"]
+
+[ext_resource type="Script" path="res://objects/chest/chest.gd" id="1_1j44u"]
+[ext_resource type="Texture2D" uid="uid://cygv6byt8advo" path="res://images/chest/Chests.png" id="1_xtqel"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p6fn"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(0, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0e1h"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(48, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcdq4"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(96, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3qrg"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(144, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07vh"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(192, 128, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ter76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p6fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0e1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcdq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3qrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p07vh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_475xv"]
+radius = 194.003
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_1j44u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, -7)
+sprite_frames = SubResource("SpriteFrames_ter76")
+frame_progress = 0.951521
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_475xv")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = -104.0
+offset_top = -84.0
+offset_right = 104.0
+offset_bottom = -45.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -277.0
+offset_right = 104.0
+offset_bottom = -164.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
