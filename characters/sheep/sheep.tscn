@@ -98,10 +98,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kh0q1"]
-size = Vector2(23.2804, 52)
+size = Vector2(28.5714, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qdoy"]
-size = Vector2(20, 1)
+size = Vector2(25, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8et7"]
 radius = 8.0
@@ -123,12 +123,12 @@ drag_vertical_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hw55n")
-animation = &"run"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.170016
+frame_progress = 0.845556
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 3)
+position = Vector2(-3.49999, 3)
 scale = Vector2(0.945, 0.5)
 shape = SubResource("RectangleShape2D_kh0q1")
 one_way_collision_margin = 0.0
@@ -136,7 +136,7 @@ one_way_collision_margin = 0.0
 [node name="Celling_check" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Celling_check"]
-position = Vector2(-6, -9.5)
+position = Vector2(-3.5, -9.5)
 shape = SubResource("RectangleShape2D_5qdoy")
 debug_color = Color(0.981877, 0, 0.367199, 0.42)
 

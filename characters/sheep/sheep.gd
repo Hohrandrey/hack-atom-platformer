@@ -15,6 +15,7 @@ var moving_velosity_x = 0
 var jerk = 0
 var is_jerk = false
 
+var is_death = false
 var is_end = false
 
 const MAX_JUMP = 100
@@ -29,6 +30,8 @@ func _ready() -> void:
 	add_to_group("sheep")
 
 func _physics_process(delta: float) -> void:
+	if is_death:
+		_death()
 	# Handle jump.
 	if Input.is_action_pressed("jump") and abs(jump_velocity) < MAX_JUMP and\
 	not(is_on_wall_only()):
@@ -94,11 +97,15 @@ func _physics_process(delta: float) -> void:
 func _death():
 	position = spawn
 	emit_signal("death")
+	is_death = false
+	var nodes = get_tree().get_nodes_in_group("m_platform")
+	for node in nodes:
+		node.position = node.spawn
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"):
-		_death()
+		is_death = true
 
 
 func _on_moving_platform_platform(velosity: Variant) -> void:
@@ -115,7 +122,7 @@ func _on_spawn_new_spawn(x: Variant, y: Variant) -> void:
 
 func _on_celling_check_body_entered(body: Node2D) -> void:
 	if not(body.is_in_group("sheep")) and is_on_floor():
-		_death()
+		is_death = true
 
 
 func _on_transition_end() -> void:

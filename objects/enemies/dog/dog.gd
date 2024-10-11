@@ -5,59 +5,74 @@ var spawn = Vector2()  # Место появления персонажа
 var push_back = Vector2()  # Направление и сила отталкивания
 var direction_push = 0  # Направление толчка
 var direction = 0  # Направление движения перемещения
-var old_direction = 0  # Старое направление движения перемещения
-var speed = 0.0 # Скорость персонажа
+var anim # Анимации собаки
+var jump_velocity = 0
 
 var is_sheep = false  # Есть ли овца в зоне видимости
 var is_back = false  # Флаг, указывающий, что персонажа оттолкнули назад
 
+const ACCELERATION = 10.0
+const MAX_JUMP = 100
+const ANIM = ["black", "blue", "orange", "standart"]
 const MAX_HP = 1  # Максимальный уровень здоровья
-const MAX_SPEED = 250.0  # Максимальная скорость перемещения
+const SPEED = 250.0  # Скорость перемещения
 const SPEED_PUSH = 250.0  # Скорость отталкивания
-const ACCELERATION = 10.0  # Ускорение
 const JUMP_VELOCITY = -400.0  # Скорость прыжка
 const PUSH_BACK = Vector2(100, -50)  # Вектор отталкивания
 const SLOWDOWN = 20.0 # Скорость замедления
 
 
-func apply_push_back() -> void:
-	if is_back:  # Проверяем, был ли персонаж оттолкнут
-		# Рассчитываем скорость отталкивания по направлению к точке push_back
-		velocity = position.direction_to(push_back) * SPEED_PUSH
-		# Проверяем, достиг ли персонаж точки отталкивания
-		if position.distance_to(push_back) > SPEED_PUSH * get_process_delta_time():
-			move_and_slide()  # Двигаем персонажа с рассчитанной скоростью
-		else:
-			is_back = false  # Сбрасываем флаг отталкивания, когда оно завершилось
+func _ready() -> void:
+	anim = ANIM[randi()%4]
+	spawn = position
+	hp = MAX_HP
+	visible = true
+
+
+func _jump() -> void:
+	if abs(jump_velocity) < MAX_JUMP and\
+		not(is_on_wall_only()):
+		jump_velocity -= ACCELERATION
+		velocity.y += jump_velocity
+	else:
+		jump_velocity = MAX_JUMP
+	
+	if is_on_floor():
+		jump_velocity = 0
 
 
 func _physics_process(delta: float) -> void:
-	direction = $"../../sheep".position.normalized().x
-	if direction:
-		speed += ACCELERATION * direction
-		old_direction = direction
-	elif speed / old_direction > 0:
-		speed -= SLOWDOWN * old_direction
+	if hp <= 0 or position.y >= 666:
+		_on_sheep_death()
+		visible = false
 	
-	# Maximum speed and full deceleration
-	if speed * old_direction < ACCELERATION:
-		speed = 0.0
-	if speed * old_direction > MAX_SPEED:
-		speed = MAX_SPEED * direction
-	
-	$AnimatedSprite2D.flip_h = not(old_direction+1)
+	direction = sign($"../../sheep".position.x - position.x)
+	if is_sheep:
+		if not is_on_floor():
+			_jump()
+		velocity.x = position.direction_to($"../../sheep".position).x * SPEED
+		velocity.y += SPEED_PUSH / 10
+	else:
+		velocity.x = 0
+	$AnimatedSprite2D.flip_h = not(direction+1)
+	if velocity.x != 0:
+		$AnimatedSprite2D.play("run_" + anim)
+	else:
+		$AnimatedSprite2D.play("idle_" + anim)
+	if not(visible):
+		velocity = Vector2()
+		position = spawn
 	move_and_slide()
 
 
 func _on_sheep_death() -> void:
-	queue_free()
-	var respawn = preload("res://objects/enemies/dog/dog.tscn").instantiate()
-	respawn.position = spawn
-	get_parent().add_child(respawn)
+	visible = true
+	position = spawn
+	hp = MAX_HP
+	anim = ANIM[randi()%4]
 
 
 func _on_search_sheep_body_entered(body: Node2D) -> void:
-	print("YES")
 	if body.is_in_group("sheep"):
 		is_sheep = true
 
@@ -68,9 +83,15 @@ func _on_search_sheep_body_exited(body: Node2D) -> void:
 
 
 func _on_dog_hit_area_entered(area: Area2D) -> void:
-	if area.name == "Damage" and $"../../sheep".is_jerk:
+	if area.name == "Damage" and $"../../sheep".is_jerk and visible:
 		hp -= $"../../sheep".damage
 		direction_push = $"../../sheep".direction
 		push_back.x = position.x + PUSH_BACK.x * direction_push
 		push_back.y = position.y + PUSH_BACK.y
 		is_back = true
+
+
+func _on_damage_body_entered(body: Node2D) -> void:
+	if body.is_in_group("sheep") and visible:
+		$"../../sheep".is_death = true
+		_on_sheep_death()

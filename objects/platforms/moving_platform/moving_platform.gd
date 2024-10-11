@@ -4,19 +4,27 @@ signal platform(velosity)
 signal stop
 
 @export var vector = Vector2()
+@export var is_moving = true
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
-var direction = 1
+var direction = 0
 
+var spawn = Vector2()
 var is_platform = false
 
 
 func _ready() -> void:
+	add_to_group("m_platform")
 	$Area2D.add_to_group("moving_platform")
+	spawn = position
+	if is_moving:
+		direction = 1
 
 
 func _physics_process(delta: float) -> void:
+	if $"../../sheep".is_death:
+		position = spawn
 	if is_platform:
 		emit_signal("platform", velocity.x)
 	velocity = vector * direction * SPEED
@@ -31,10 +39,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_moving_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"):
 		is_platform = true
+		is_moving = true
+		direction = 1
 
 
 func _on_moving_area_body_exited(body: Node2D) -> void:
 	is_platform = false
+	is_moving = false
+	direction = 0
 	emit_signal("stop")
 
 

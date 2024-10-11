@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bst1t6o1aot2b"]
+[gd_scene load_steps=67 format=3 uid="uid://bst1t6o1aot2b"]
 
 [ext_resource type="Script" path="res://objects/enemies/dog/dog.gd" id="1_f1jqy"]
 [ext_resource type="Texture2D" uid="uid://cs4yjuy6t1jki" path="res://images/Animals/GandalfHardcore doggy sheet 5.png" id="2_7legl"]
@@ -449,10 +449,13 @@ animations = [{
 size = Vector2(27, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4lvu"]
-size = Vector2(40, 28)
+size = Vector2(43, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byy1s"]
 radius = 298.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c8eo"]
+size = Vector2(20, 30)
 
 [node name="dog" type="CharacterBody2D"]
 position = Vector2(-2, -11)
@@ -463,7 +466,7 @@ script = ExtResource("1_f1jqy")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_rer13")
 animation = &"idle_standart"
-frame_progress = 0.498372
+frame_progress = 0.873096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 14)
@@ -473,12 +476,11 @@ shape = SubResource("RectangleShape2D_jqye4")
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DogHit"]
-position = Vector2(1, 10)
+position = Vector2(2.5, 10)
 shape = SubResource("RectangleShape2D_p4lvu")
 debug_color = Color(0.723695, 0.477475, 0, 0.42)
 
 [node name="SearchSheep" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SearchSheep"]
@@ -486,6 +488,15 @@ position = Vector2(2, 11)
 shape = SubResource("CircleShape2D_byy1s")
 debug_color = Color(0, 0.494118, 0.576471, 0.156863)
 
+[node name="Damage" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+position = Vector2(17, 9)
+shape = SubResource("RectangleShape2D_7c8eo")
+debug_color = Color(0.788447, 0.0440663, 0.273258, 0.42)
+
 [connection signal="area_entered" from="DogHit" to="." method="_on_dog_hit_area_entered"]
 [connection signal="body_entered" from="SearchSheep" to="." method="_on_search_sheep_body_entered"]
 [connection signal="body_exited" from="SearchSheep" to="." method="_on_search_sheep_body_exited"]
+[connection signal="body_entered" from="Damage" to="." method="_on_damage_body_entered"]
