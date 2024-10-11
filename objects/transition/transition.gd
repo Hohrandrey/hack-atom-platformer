@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		if current_scene.name == "level_1":
 			get_tree().change_scene_to_file("res://scenes/level_2/level_2.tscn")
 		elif current_scene.name == "level_2":
-			get_tree().change_scene_to_file("res://scenes/level_1/level_1.tscn")
+			get_tree().change_scene_to_file("res://scenes/level_3/level_3.tscn")
 		
 
 
