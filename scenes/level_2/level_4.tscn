@@ -1,22 +1,22 @@
 [gd_scene load_steps=18 format=3 uid="uid://h0gjmyodd7ii"]
 
-[ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="2_ku4uq"]
-[ext_resource type="PackedScene" uid="uid://doypa4iy1cctp" path="res://characters/sheep/sheep.tscn" id="3_bd2vk"]
-[ext_resource type="Texture2D" uid="uid://bupd2j314lhy1" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="3_u7f10"]
-[ext_resource type="Texture2D" uid="uid://w1sqg8fdgopr" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/5 - Tree_row_BG_2.png" id="4_ogk28"]
-[ext_resource type="Texture2D" uid="uid://bwshw8svul7y5" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="5_76c6a"]
-[ext_resource type="Texture2D" uid="uid://b33vjssj8hyaq" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="6_i2l6g"]
-[ext_resource type="PackedScene" uid="uid://bw5447klvfmgi" path="res://objects/spawn/spawn.tscn" id="7_5v3x8"]
-[ext_resource type="Texture2D" uid="uid://btpjqo16ce3ep" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="7_udtwr"]
-[ext_resource type="PackedScene" uid="uid://4aqr2hytdqj3" path="res://objects/platforms/falling_plateform/falling_plateform.tscn" id="9_u7h3l"]
-[ext_resource type="PackedScene" uid="uid://w7av4fj3pa4m" path="res://objects/platforms/piston/piston.tscn" id="10_878ua"]
-[ext_resource type="PackedScene" uid="uid://hwmgqyuysuam" path="res://objects/platforms/moving_platform/moving_platform.tscn" id="10_degkr"]
-[ext_resource type="PackedScene" uid="uid://df0ey4w5h5c6c" path="res://objects/platforms/moving_platform/stop_platform.tscn" id="11_g6l7e"]
-[ext_resource type="PackedScene" uid="uid://bst1t6o1aot2b" path="res://objects/enemies/dog/dog.tscn" id="13_kbln0"]
-[ext_resource type="PackedScene" uid="uid://dckyqigowwh0r" path="res://objects/transition/transition.tscn" id="14_fgqpn"]
+[ext_resource type="Texture2D" uid="uid://bupd2j314lhy1" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="1_6ghnu"]
+[ext_resource type="Texture2D" uid="uid://w1sqg8fdgopr" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/5 - Tree_row_BG_2.png" id="2_ir247"]
+[ext_resource type="Texture2D" uid="uid://bwshw8svul7y5" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="3_xneyy"]
+[ext_resource type="Texture2D" uid="uid://b33vjssj8hyaq" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="4_2v6f0"]
+[ext_resource type="Texture2D" uid="uid://btpjqo16ce3ep" path="res://images/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="5_63j0b"]
+[ext_resource type="Texture2D" uid="uid://bvvit8hwar580" path="res://images/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="6_bdyyn"]
+[ext_resource type="PackedScene" uid="uid://bw5447klvfmgi" path="res://objects/spawn/spawn.tscn" id="7_7x1tj"]
+[ext_resource type="PackedScene" uid="uid://doypa4iy1cctp" path="res://characters/sheep/sheep.tscn" id="8_51j0n"]
+[ext_resource type="PackedScene" uid="uid://4aqr2hytdqj3" path="res://objects/platforms/falling_plateform/falling_plateform.tscn" id="9_x1bjf"]
+[ext_resource type="PackedScene" uid="uid://w7av4fj3pa4m" path="res://objects/platforms/piston/piston.tscn" id="10_ptx3k"]
+[ext_resource type="PackedScene" uid="uid://hwmgqyuysuam" path="res://objects/platforms/moving_platform/moving_platform.tscn" id="11_3g0uv"]
+[ext_resource type="PackedScene" uid="uid://df0ey4w5h5c6c" path="res://objects/platforms/moving_platform/stop_platform.tscn" id="12_o4ewr"]
+[ext_resource type="PackedScene" uid="uid://bst1t6o1aot2b" path="res://objects/enemies/dog/dog.tscn" id="13_hrr22"]
+[ext_resource type="PackedScene" uid="uid://dckyqigowwh0r" path="res://objects/transition/transition.tscn" id="14_ra07r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8im1"]
-texture = ExtResource("2_ku4uq")
+texture = ExtResource("6_bdyyn")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -310,7 +310,7 @@ sources/0 = SubResource("TileSetAtlasSource_k8im1")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e3yk"]
 size = Vector2(861, 20)
 
-[node name="level_2" type="Node2D"]
+[node name="level_4" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -320,7 +320,7 @@ motion_mirroring = Vector2(1000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(4, 3.115)
-texture = ExtResource("3_u7f10")
+texture = ExtResource("1_6ghnu")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -329,7 +329,7 @@ motion_mirroring = Vector2(1010, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 scale = Vector2(4, 3.115)
-texture = ExtResource("4_ogk28")
+texture = ExtResource("2_ir247")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -338,7 +338,7 @@ motion_mirroring = Vector2(1090, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 scale = Vector2(4, 3.115)
-texture = ExtResource("5_76c6a")
+texture = ExtResource("3_xneyy")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -347,7 +347,7 @@ motion_mirroring = Vector2(960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 scale = Vector2(4, 3.115)
-texture = ExtResource("6_i2l6g")
+texture = ExtResource("4_2v6f0")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -355,7 +355,7 @@ motion_mirroring = Vector2(1090, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 scale = Vector2(4, 3.115)
-texture = ExtResource("7_udtwr")
+texture = ExtResource("5_63j0b")
 centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -380,125 +380,125 @@ debug_color = Color(0.991892, 0, 0.259521, 0.42)
 [node name="start_spawn" type="Marker2D" parent="spawn"]
 position = Vector2(168, 576)
 
-[node name="spawn" parent="spawn" instance=ExtResource("7_5v3x8")]
+[node name="spawn" parent="spawn" instance=ExtResource("7_7x1tj")]
 position = Vector2(5744, 320)
 
-[node name="spawn2" parent="spawn" instance=ExtResource("7_5v3x8")]
+[node name="spawn2" parent="spawn" instance=ExtResource("7_7x1tj")]
 position = Vector2(9944, 620)
 
-[node name="sheep" parent="." instance=ExtResource("3_bd2vk")]
+[node name="sheep" parent="." instance=ExtResource("8_51j0n")]
 position = Vector2(168, 576)
 
 [node name="FallingPlatform" type="Node2D" parent="."]
 
-[node name="falling_plateform" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(2297, 512)
 
-[node name="falling_plateform2" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform2" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(2547, 482)
 
-[node name="falling_plateform3" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform3" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(2797, 452)
 
-[node name="falling_plateform4" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform4" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(3344, 400)
 
-[node name="falling_plateform5" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform5" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(3904, 400)
 
-[node name="falling_plateform6" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform6" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(4464, 400)
 
-[node name="falling_plateform16" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform16" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10389, 501)
 
-[node name="falling_plateform17" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform17" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10530, 441)
 
-[node name="falling_plateform19" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform19" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10527, 287)
 
-[node name="falling_plateform20" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform20" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10385, 247)
 
-[node name="falling_plateform21" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform21" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10596, 127)
 
-[node name="falling_plateform22" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform22" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10499, 167)
 
-[node name="falling_plateform18" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform18" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(10387, 368)
 
-[node name="falling_plateform13" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform13" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(8588, 262)
 
-[node name="falling_plateform14" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform14" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(8690, 238)
 
-[node name="falling_plateform15" parent="FallingPlatform" instance=ExtResource("9_u7h3l")]
+[node name="falling_plateform15" parent="FallingPlatform" instance=ExtResource("9_x1bjf")]
 position = Vector2(8492, 286)
 
 [node name="Piston" type="Node2D" parent="."]
 
-[node name="piston" parent="Piston" instance=ExtResource("10_878ua")]
+[node name="piston" parent="Piston" instance=ExtResource("10_ptx3k")]
 position = Vector2(3623, 264)
 vector = Vector2(0, -1)
 acceleration = 400
 
-[node name="piston2" parent="Piston" instance=ExtResource("10_878ua")]
+[node name="piston2" parent="Piston" instance=ExtResource("10_ptx3k")]
 position = Vector2(4183, 296)
 vector = Vector2(0, -1)
 acceleration = 300
 
-[node name="piston3" parent="Piston" instance=ExtResource("10_878ua")]
+[node name="piston3" parent="Piston" instance=ExtResource("10_ptx3k")]
 position = Vector2(4743, 328)
 vector = Vector2(0, -1)
 acceleration = 200
 
 [node name="MovingPlatform" type="Node2D" parent="."]
 
-[node name="moving_platform" parent="MovingPlatform" instance=ExtResource("10_degkr")]
+[node name="moving_platform" parent="MovingPlatform" instance=ExtResource("11_3g0uv")]
 position = Vector2(4864, 400)
 vector = Vector2(1, 0)
 is_moving = false
 
-[node name="moving_platform10" parent="MovingPlatform" instance=ExtResource("10_degkr")]
+[node name="moving_platform10" parent="MovingPlatform" instance=ExtResource("11_3g0uv")]
 position = Vector2(8787, 231)
 vector = Vector2(1, 0)
 is_moving = false
 
-[node name="StopPlatform_1" parent="MovingPlatform" instance=ExtResource("11_g6l7e")]
+[node name="StopPlatform_1" parent="MovingPlatform" instance=ExtResource("12_o4ewr")]
 position = Vector2(5264, 408)
 
-[node name="StopPlatform2_1" parent="MovingPlatform" instance=ExtResource("11_g6l7e")]
+[node name="StopPlatform2_1" parent="MovingPlatform" instance=ExtResource("12_o4ewr")]
 position = Vector2(5264, 320)
 
-[node name="moving_platform2" parent="MovingPlatform" instance=ExtResource("10_degkr")]
+[node name="moving_platform2" parent="MovingPlatform" instance=ExtResource("11_3g0uv")]
 position = Vector2(5328, 312)
 vector = Vector2(-1, 0)
 is_moving = false
 
-[node name="moving_platform3" parent="MovingPlatform" instance=ExtResource("10_degkr")]
+[node name="moving_platform3" parent="MovingPlatform" instance=ExtResource("11_3g0uv")]
 position = Vector2(6594, 320)
 vector = Vector2(1, 0)
 is_moving = false
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="dog" parent="Enemies" instance=ExtResource("13_kbln0")]
+[node name="dog" parent="Enemies" instance=ExtResource("13_hrr22")]
 position = Vector2(6344, 296)
 
-[node name="dog2" parent="Enemies" instance=ExtResource("13_kbln0")]
+[node name="dog2" parent="Enemies" instance=ExtResource("13_hrr22")]
 position = Vector2(7142, 184)
 
-[node name="dog3" parent="Enemies" instance=ExtResource("13_kbln0")]
+[node name="dog3" parent="Enemies" instance=ExtResource("13_hrr22")]
 position = Vector2(7733, 183)
 
-[node name="dog4" parent="Enemies" instance=ExtResource("13_kbln0")]
+[node name="dog4" parent="Enemies" instance=ExtResource("13_hrr22")]
 position = Vector2(8321, 188)
 
-[node name="transition" parent="." instance=ExtResource("14_fgqpn")]
+[node name="transition" parent="." instance=ExtResource("14_ra07r")]
 position = Vector2(10963, 125)
 
 [connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
