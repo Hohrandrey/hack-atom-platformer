@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bst1t6o1aot2b" path="res://objects/enemies/dog/dog.tscn" id="13_kbln0"]
 [ext_resource type="PackedScene" uid="uid://dckyqigowwh0r" path="res://objects/transition/transition.tscn" id="14_fgqpn"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0m5a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8im1"]
 texture = ExtResource("2_ku4uq")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -305,7 +305,7 @@ texture = ExtResource("2_ku4uq")
 
 [sub_resource type="TileSet" id="TileSet_23pbe"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_i0m5a")
+sources/0 = SubResource("TileSetAtlasSource_k8im1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e3yk"]
 size = Vector2(861, 20)
@@ -388,24 +388,6 @@ position = Vector2(9944, 620)
 
 [node name="sheep" parent="." instance=ExtResource("3_bd2vk")]
 position = Vector2(168, 576)
-
-[node name="falling_plateform13" parent="sheep" instance=ExtResource("9_u7h3l")]
-position = Vector2(8588, 262)
-
-[node name="falling_plateform14" parent="sheep" instance=ExtResource("9_u7h3l")]
-position = Vector2(8690, 238)
-
-[node name="falling_plateform15" parent="sheep" instance=ExtResource("9_u7h3l")]
-position = Vector2(8492, 286)
-
-[node name="falling_plateform13" parent="sheep/falling_plateform15" instance=ExtResource("9_u7h3l")]
-position = Vector2(8588, 262)
-
-[node name="falling_plateform14" parent="sheep/falling_plateform15" instance=ExtResource("9_u7h3l")]
-position = Vector2(8690, 238)
-
-[node name="falling_plateform15" parent="sheep/falling_plateform15" instance=ExtResource("9_u7h3l")]
-position = Vector2(8492, 286)
 
 [node name="FallingPlatform" type="Node2D" parent="."]
 
@@ -522,7 +504,6 @@ position = Vector2(10963, 125)
 [connection signal="body_entered" from="Area2D" to="sheep" method="_on_area_2d_body_entered"]
 [connection signal="new_spawn" from="spawn/spawn" to="sheep" method="_on_spawn_new_spawn"]
 [connection signal="new_spawn" from="spawn/spawn2" to="sheep" method="_on_spawn_new_spawn"]
-[connection signal="death" from="sheep" to="sheep/falling_plateform15" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform2" method="_on_sheep_death"]
 [connection signal="death" from="sheep" to="FallingPlatform/falling_plateform3" method="_on_sheep_death"]
