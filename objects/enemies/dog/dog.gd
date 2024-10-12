@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var is_promo = true
+
 var hp = MAX_HP  # Текущий уровень здоровья персонажа
 var spawn = Vector2()  # Место появления персонажа
 var push_back = Vector2()  # Направление и сила отталкивания
@@ -43,6 +45,11 @@ func _jump() -> void:
 
 func _physics_process(delta: float) -> void:
 	if hp <= 0 or position.y >= 666:
+		if is_promo:
+			if $"../../sheep".label.text == "":
+				$"../../sheep".label.text = "PROMO: "
+			$"../../sheep".label.text += $"../../sheep".promo.substr(0, 2)
+			$"../../sheep".promo = $"../../sheep".promo.substr(2, $"../../sheep".promo.length()-2)
 		_on_sheep_death()
 		visible = false
 	

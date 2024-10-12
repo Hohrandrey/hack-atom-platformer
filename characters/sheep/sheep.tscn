@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://doypa4iy1cctp"]
+[gd_scene load_steps=22 format=3 uid="uid://doypa4iy1cctp"]
 
 [ext_resource type="Texture2D" uid="uid://bu7k2iaecwjt8" path="res://images/Тестовый перс/sheep-idle/sheep-idle.png" id="1_0n53y"]
 [ext_resource type="Script" path="res://characters/sheep/sheep.gd" id="1_h2ofo"]
@@ -107,6 +107,9 @@ size = Vector2(25, 1)
 radius = 8.0
 height = 22.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_i5mls"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="sheep" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_h2ofo")
@@ -145,5 +148,12 @@ debug_color = Color(0.981877, 0, 0.367199, 0.42)
 position = Vector2(5, 0)
 shape = SubResource("CapsuleShape2D_e8et7")
 debug_color = Color(0.788447, 0.0440663, 0.273258, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -36.0
+offset_right = 27.0
+offset_bottom = -13.0
+label_settings = SubResource("LabelSettings_i5mls")
 
 [connection signal="body_entered" from="Celling_check" to="." method="_on_celling_check_body_entered"]

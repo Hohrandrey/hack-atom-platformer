@@ -9,7 +9,7 @@ var text_link = "/home/ilya/Документы/Hackaton/text.txt"
 var encrypted_ecb
 
 # sheepiscool
-const TEXT = "92be66296a24458eafc5594169515a57"
+var input_text = " "
 
 func _ready() -> void:
 	edit = $TextEdit
@@ -28,34 +28,15 @@ func load_from_file(link):
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):  # Проверка нажатия клавиши (например, Enter)
-		encrypt_data()
-		if text == TEXT:
-			text = "flag"
+		input_text = load_from_file(text_link)
+		text = edit.text
+		if int(text) == $"../sheep".money:
+			text = "flag{tHensEcheSS!223}"
+			$"../sheep".label.text = text
 		else:
-			text = TEXT + '/n' + text
+			text = input_text
 		save_to_file(text, text_link)
 		edit.clear()
-
-
-func encrypt_data() -> void:
-	var key = "Afrn"  # Ключ длиной 5 байт (32 бита)
-	var iv = "TheSocietyofFact"  # IV должен быть ровно 16 байт
-	var data = edit.text  # Получение текста
-
-	# Убедитесь, что длина данных кратна 16, добавьте паддинг, если нужно
-	data = pad_data(data)
-
-	# Расширение ключа до 16 байт (AES-128)
-	var extended_key = pad_edges(key)
-
-	# Шифрование в режиме ECB
-	aes.start(AESContext.MODE_ECB_ENCRYPT, extended_key.to_utf8_buffer())
-	encrypted_ecb  = aes.update(data.to_utf8_buffer())
-	aes.finish()
-
-	# Обновление текста в Label
-	text = encrypted_ecb.hex_encode()
-
 
 func pad_data(data: String) -> String:
 	# Добавление паддинга для кратности 16 байтам

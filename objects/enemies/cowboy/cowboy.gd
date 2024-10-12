@@ -19,12 +19,16 @@ var raycast: RayCast2D
 var line: Line2D
 var sheep_position = Vector2()
 
-const MAX_HP = 3 #2147483647
+const MAX_HP = 2147483647
 const SPEED = 100.0
 const SPEED_PUSH = 250.0
 const ACCELERATION = 10.0
 const JUMP_VELOCITY = -400.0
 const PUSH_BACK = Vector2(100, -50)
+
+
+
+
 
 func _ready() -> void:
 	raycast = $RayCast2D

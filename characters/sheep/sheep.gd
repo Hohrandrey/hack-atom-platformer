@@ -2,6 +2,13 @@ extends CharacterBody2D
 
 signal death
 
+var text_link = "/home/ilya/Документы/Hackaton/game.save"
+var text
+var array = []
+
+var promo = PROMO
+var money = 0
+
 var damage = 1
 var speed = 0.0
 var direction = 0
@@ -20,6 +27,9 @@ var is_end = false
 
 var current_scene
 
+var label
+
+const PROMO = "3t\\hq#9G"
 const MAX_JUMP = 100
 const SLOWDOWN = 20.0
 const ACCELERATION = 10.0
@@ -27,7 +37,84 @@ const MAX_SPEED = 250.0
 const SPEED_JERK = 500.0
 const MAX_JERK = 100
 
+func load_file(link):
+	var file = FileAccess.open(link, FileAccess.READ)
+	text = file.get_as_text()
+	array = decrypt(text)
+	damage = array[-1]
+	money = array[0]
+
+
+func decrypt(data):
+	var arr = []
+	var size = hex_to_decimal(data.substr(0,1))
+	if size > 0:
+		for i in range(1, data.length(), size):
+			arr.append(hex_to_decimal(data.substr(i, size)))
+	return arr
+
+
+func hex_to_decimal(hex_string: String) -> int:
+	var decimal_value = 0
+	var length = hex_string.length()
+
+	# Перебираем каждый символ в строке
+	for i in range(length):
+		var char = hex_string[length - 1 - i]  # Берем символ с конца
+		
+		var let = {
+			"0": 0,
+			"1": 1,
+			"2": 2,
+			"3": 3,
+			"4": 4,
+			"5": 5,
+			"6": 6,
+			"7": 7,
+			"8": 8,
+			"9": 9,
+			"A": 10,
+			"B": 11,
+			"C": 12,
+			"D": 13,
+			"E": 14,
+			"F": 15,
+			"G": 16,
+			"H": 17,
+			"I": 18,
+			"J": 19,
+			"K": 20,
+			"L": 21,
+			"M": 22,
+			"N": 23,
+			"O": 24,
+			"P": 25,
+			"Q": 26,
+			"R": 27,
+			"S": 28,
+			"T": 29,
+			"U": 30,
+			"V": 31,
+			"W": 32,
+			"X": 33,
+			"Y": 34,
+			"Z": 35
+		}
+		if not (char in let):
+			var file = FileAccess.open(text_link, FileAccess.WRITE)
+			file.store_string("")
+			get_tree().quit()
+		# Добавляем значение к десятичному результату
+		else:
+			decimal_value += let[char] * pow(36, i)
+
+	return decimal_value
+
+
 func _ready() -> void:
+	load_file(text_link)
+	print(money)
+	label = $Label
 	current_scene = get_tree().current_scene
 	spawn = position
 	add_to_group("sheep")
@@ -37,6 +124,7 @@ func _ready() -> void:
 		$Camera2D.limit_right = 10000
 	elif current_scene.name == "level_3":
 		$Camera2D.limit_right = 8700
+		
 
 func _physics_process(delta: float) -> void:
 	if is_death:
@@ -48,7 +136,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += jump_velocity
 	else:
 		jump_velocity = MAX_JUMP
-	
 	if is_on_floor():
 		jump_velocity = 0
 	
@@ -104,6 +191,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _death():
+	label.text = ""
+	promo = PROMO
 	position = spawn
 	emit_signal("death")
 	is_death = false
