@@ -113,7 +113,6 @@ func hex_to_decimal(hex_string: String) -> int:
 
 func _ready() -> void:
 	load_file(text_link)
-	print(money)
 	label = $Label
 	current_scene = get_tree().current_scene
 	spawn = position

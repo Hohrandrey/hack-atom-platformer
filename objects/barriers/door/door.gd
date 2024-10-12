@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 func _on_sign_door_open() -> void:
 	visible = false
 	position.y += 200
+	$"../sheep".label.text = "flag{:634Caesar!Heron*}"

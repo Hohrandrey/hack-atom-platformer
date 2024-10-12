@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		position = spawn
 	if hp <= 0:
 		$"../../Wall".queue_free()
+		$"../../sheep".label.text = "flag{SheEepBoy^^}"
 		queue_free()
 	
 	if not is_on_floor():
