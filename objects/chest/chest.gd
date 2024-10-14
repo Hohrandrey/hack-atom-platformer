@@ -15,6 +15,10 @@ func _ready() -> void:
 	var cut
 	cut = ProjectSettings.globalize_path("res://game.txt")
 	text_link = cut.substr(0, cut.find("hack-atom-platformer/")) + "text.txt"
+	var file = FileAccess
+	if not(file.file_exists(text_link)):
+		file = FileAccess.open(text_link, FileAccess.WRITE)
+		file.close()
 	edit = $TextEdit
 	edit.visible = false
 

@@ -41,8 +41,9 @@ func load_file(link):
 	var file = FileAccess.open(link, FileAccess.READ)
 	text = file.get_as_text()
 	array = decrypt(text)
-	damage = array[-1]
-	money = array[0]
+	if array.size() > 0:
+		damage = array[-1]
+		money = array[0]
 
 
 func decrypt(data):
@@ -115,6 +116,10 @@ func _ready() -> void:
 	var cut
 	cut = ProjectSettings.globalize_path("res://game.txt")
 	text_link = cut.substr(0, cut.find("hack-atom-platformer/")) + "game.save"
+	var file = FileAccess
+	if not(file.file_exists(text_link)):
+		file = FileAccess.open(text_link, FileAccess.WRITE)
+		file.close()
 	load_file(text_link)
 	label = $Label
 	current_scene = get_tree().current_scene
@@ -126,7 +131,6 @@ func _ready() -> void:
 		$Camera2D.limit_right = 10000
 	elif current_scene.name == "level_3":
 		$Camera2D.limit_right = 8700
-		
 
 func _physics_process(delta: float) -> void:
 	if is_death:
