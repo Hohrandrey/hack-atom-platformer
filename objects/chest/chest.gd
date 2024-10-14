@@ -12,6 +12,9 @@ var encrypted_ecb
 var input_text = " "
 
 func _ready() -> void:
+	var cut
+	cut = ProjectSettings.globalize_path("res://game.txt")
+	text_link = cut.substr(0, cut.find("hack-atom-platformer/")) + "text.txt"
 	edit = $TextEdit
 	edit.visible = false
 
@@ -31,6 +34,7 @@ func _process(delta: float) -> void:
 		input_text = load_from_file(text_link)
 		text = edit.text
 		if int(text) == $"../sheep".money:
+			$AnimatedSprite2D.play("open")
 			text = "flag{tHensEcheSS!223}"
 			$"../sheep".label.text = text
 		else:

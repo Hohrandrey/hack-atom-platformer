@@ -29,7 +29,7 @@ var current_scene
 
 var label
 
-const PROMO = "3t\\hq#9G"
+const PROMO = "3tahq#9G"
 const MAX_JUMP = 100
 const SLOWDOWN = 20.0
 const ACCELERATION = 10.0
@@ -112,6 +112,9 @@ func hex_to_decimal(hex_string: String) -> int:
 
 
 func _ready() -> void:
+	var cut
+	cut = ProjectSettings.globalize_path("res://game.txt")
+	text_link = cut.substr(0, cut.find("hack-atom-platformer/")) + "game.save"
 	load_file(text_link)
 	label = $Label
 	current_scene = get_tree().current_scene

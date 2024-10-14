@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr07fo5t4pe2j"]
+[gd_scene load_steps=15 format=3 uid="uid://cr07fo5t4pe2j"]
 
 [ext_resource type="Script" path="res://objects/chest/chest.gd" id="1_1j44u"]
 [ext_resource type="Texture2D" uid="uid://cygv6byt8advo" path="res://images/chest/Chests.png" id="1_xtqel"]
@@ -23,6 +23,26 @@ region = Rect2(144, 128, 48, 32)
 atlas = ExtResource("1_xtqel")
 region = Rect2(192, 128, 48, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qutf7"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(0, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f7lg"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(48, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f078t"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(96, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0wja"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(144, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35h2a"]
+atlas = ExtResource("1_xtqel")
+region = Rect2(192, 160, 48, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ter76"]
 animations = [{
 "frames": [{
@@ -44,6 +64,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qutf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f7lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f078t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0wja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35h2a")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_475xv"]
@@ -55,7 +95,8 @@ script = ExtResource("1_1j44u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, -7)
 sprite_frames = SubResource("SpriteFrames_ter76")
-frame_progress = 0.106624
+animation = &"open"
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
